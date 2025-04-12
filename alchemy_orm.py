@@ -27,8 +27,8 @@ class Author(Base):
     login: Mapped[str] = mapped_column(String(100), default='No login')
     middle_name: Mapped[Optional[str]]  # optional obsluguje wartosc default
 
-    books: Mapped[List['Book']] = relationship(back_populates='author', cascade='delete, delete-orphan')  # nie bedzie istniec ksiazka ktora nie ma autora
-    address: Mapped['Address'] = relationship(back_populates='author', cascade='delete, delete-orphan')
+    books: Mapped[List['Book']] = relationship(back_populates='author', cascade='all, delete, delete-orphan')  # nie bedzie istniec ksiazka ktora nie ma autora
+    address: Mapped['Address'] = relationship(back_populates='author', cascade='all, delete, delete-orphan')
 
     def __str__(self):
         return f'{self.name} {self.middle_name}'
@@ -90,7 +90,7 @@ class Event(Base):
 
     participants: Mapped[List['Author']] = relationship(secondary=events_authors)
 
-# teraz nie bedziemy tworzyc takiej bezposredniej ralacji ale przy pomocy tabeli pomocniczej
+# teraz nie bedziemy tworzyc takiej bezpośredniej relacji ale przy pomocy tabeli pomocniczej
 
 
 
