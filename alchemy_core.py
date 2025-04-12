@@ -10,7 +10,7 @@ from sqlalchemy import create_engine
 load_dotenv()
 
 database_password = os.environ.get('DATABASE_PASSWORD')
-user = 'karkosz' #u nas akurat baza ma taka sama nazwe jak user
+user = 'mhardyn' #u nas akurat baza ma taka sama nazwe jak user
 server = 'morfeusz.wszib.edu.pl'
 driver = 'ODBC+Driver+17+for+SQL+Server'
 

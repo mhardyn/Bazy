@@ -1,4 +1,4 @@
-USE karkosz
+USE mhardyn
 
 --zeby sprawdzic w jakiej jestem bazie
 select db_name()
