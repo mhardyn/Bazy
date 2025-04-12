@@ -21,9 +21,9 @@ engine = create_engine(
 Session = sessionmaker(engine) # metoda z alchemy orm sessionmaker
 
 if __name__ == '__main__': # zablokowanie żeby nie odpalić sobie tego w innym pliku
-    session = Session()
-    session.execute(CreateSchema('library_orm'))
-    session.commit()
+    # session = Session()
+    # session.execute(CreateSchema('library_orm'))
+    # session.commit()
 
     Base.metadata.create_all(engine)
 
