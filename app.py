@@ -6,8 +6,51 @@ from CTkTable import CTkTable
 
 session = Session()
 
+def add_author_to_db(author: Author):
+    session.add(author)
+    session.commit()
+
 def add_author():
-    print('Dodanie autora kliknięte')
+    add_author_popup = ctk.CTkToplevel(master=app)
+    add_author_popup.title("Dodaj autora")
+    add_author_popup.geometry("800x600")
+
+    add_author_popup.grid_columnconfigure(0, weight=1)
+
+    ctk.CTkLabel(add_author_popup, text="Dodanie nowego autora", font=ctk.CTkFont(size=30, weight='bold')) \
+        .grid(row=0, column=0, padx=20, pady=20)
+
+# inputs
+
+    ctk.CTkLabel(add_author_popup, text='Imię i Nazwisko') \
+        .grid(row=1, column=0, padx=20, pady=(20, 0), sticky='w')
+    name_input = ctk.CTkEntry(add_author_popup)
+    name_input.grid(row=2, column=0, padx=20, sticky='ew')
+
+    ctk.CTkLabel(add_author_popup, text='Email') \
+        .grid(row=3, column=0, padx=20, pady=(20, 0), sticky='w')
+    email_input = ctk.CTkEntry(add_author_popup)
+    email_input.grid(row=4, column=0, padx=20, sticky='ew')
+
+    ctk.CTkLabel(add_author_popup, text='Login') \
+        .grid(row=5, column=0, padx=20, pady=(20, 0), sticky='w')
+    login_input = ctk.CTkEntry(add_author_popup)
+    login_input.grid(row=6, column=0, padx=20, sticky='ew')
+
+    ctk.CTkLabel(add_author_popup, text='Drugie imię') \
+        .grid(row=7, column=0, padx=20, pady=(20, 0), sticky='w')
+    middle_name_input = ctk.CTkEntry(add_author_popup)
+    middle_name_input.grid(row=8, column=0, padx=20, sticky='ew')
+
+    # add author button
+    ctk.CTkButton(add_author_popup, text='Dodaj authora',
+                  command=lambda: add_author_to_db(Author(
+                      name=name_input.get(),
+                      middle_name=middle_name_input.get(),
+                      email=email_input.get(),
+                      login=login_input.get(),
+                  ))).grid(row=9, column=0, padx=20, pady=20, sticky='ew')
+
 
 if __name__ == '__main__':
     ctk.set_appearance_mode('dark') # ustawienie ciemnego okna
